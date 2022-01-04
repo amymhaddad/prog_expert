@@ -1,4 +1,3 @@
-
 import random
 
 def user_numbers():
@@ -21,27 +20,25 @@ def user_numbers():
                 if end < start:
                     print("Please enter a valid number.")
                     continue
-        if isinstance(start, int) and isinstance(end, int) and start < end:
+        if start < end:
             break 
-        else:
-            continue
+
     return start, end
 
 def guess_number():
     start, end = user_numbers()
     attempts = 1
     random_num = random.randint(start, end)
-    guessed_num = 0
+    guessed_num = ""
    
-    while not isinstance(guessed_num, int):
-        
+    while True:
         try:
             guessed_num = int(input("Guess a number: "))
         except ValueError:
+            print("Please enter a valid number.")
             continue
-        if isinstance(guessed_num, int):
-            guessed_num = int(guessed_num)
-            break
+        guessed_num = int(guessed_num)
+        break
 
     while random_num != int(guessed_num):
         guessed_num = input("Guess a number: ")
@@ -51,4 +48,4 @@ def guess_number():
         print(f"You guessed the number in {attempts} attempts")
     else:
         print(f"You guessed the number in {attempts} attempt")
-print(guess_number())
+guess_number()
