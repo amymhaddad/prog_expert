@@ -1,6 +1,6 @@
 import random
 
-#Sol 1
+# Sol 1
 def user_numbers():
     start = 0
     end = 0
@@ -10,7 +10,7 @@ def user_numbers():
         except ValueError:
             print("Please enter a valid number.")
             continue
-   
+
         while end < start:
             try:
                 end = int(input("Enter the end of the range: "))
@@ -22,16 +22,17 @@ def user_numbers():
                     print("Please enter a valid number.")
                     continue
         if start < end:
-            break 
+            break
 
     return start, end
+
 
 def guess_number():
     start, end = user_numbers()
     attempts = 1
     random_num = random.randint(start, end)
     guessed_num = ""
-   
+
     while True:
         try:
             guessed_num = int(input("Guess a number: "))
@@ -49,12 +50,16 @@ def guess_number():
         print(f"You guessed the number in {attempts} attempts")
     else:
         print(f"You guessed the number in {attempts} attempt")
-#guess_number()
 
-#Sol 2
-import random 
 
-INVALID_INPUT = 'Please enter a valid number.'
+# guess_number()
+
+# Sol 2
+import random
+
+INVALID_INPUT = "Please enter a valid number."
+
+
 def num_range():
     start = input("Enter the start of the range: ")
 
@@ -69,12 +74,13 @@ def num_range():
 
     return int(start), int(end)
 
+
 def guesser():
     attempts = 0
     guess = None
     start, end = num_range()
     random_num = random.randint(start, end)
-    
+
     while random_num != guess:
         guessed_num = input("Guess a number: ")
 
@@ -83,9 +89,11 @@ def guesser():
             continue
         attempts += 1
         guess = int(guessed_num)
-    
+
     if attempts > 1:
         print(f"You guessed the number in {attempts} attempts")
     else:
         print(f"You guessed the number in {attempts} attempt")
+
+
 guesser()

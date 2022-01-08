@@ -1,12 +1,14 @@
-#Sol 1 - Start at the beginning of list and go to (but don't include) len(lst) - elements_to_trim
+# Sol 1 - Start at the beginning of list and go to (but don't include) len(lst) - elements_to_trim
 def trim_list(lst, elements_to_trim):
-    return lst[:len(lst) - elements_to_trim]
+    return lst[: len(lst) - elements_to_trim]
 
-#Sol 2
+
+# Sol 2
 def trim_list(lst, elements_to_trim):
     return [lst[i] for i in range(len(lst) - elements_to_trim)]
 
-#Sol 2 - loop through all elements -- except for the ones at the end; just loop through the elements I want to return 
+
+# Sol 2 - loop through all elements -- except for the ones at the end; just loop through the elements I want to return
 def trim_list(lst, elements_to_trim):
     new_list = []
 
@@ -14,7 +16,8 @@ def trim_list(lst, elements_to_trim):
         new_list.append(lst[i])
     return new_list
 
-#Sol 3
+
+# Sol 3
 def trim_list(lst, elements_to_trim):
 
     new_list = []
@@ -26,4 +29,3 @@ def trim_list(lst, elements_to_trim):
     for ele in lst:
         new_list.append(ele)
     return new_list
-

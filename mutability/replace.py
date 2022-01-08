@@ -5,4 +5,3 @@ def replace(lst, target, swap_value):
         if curr_word == target:
             lst[i] = swap_value
     return lst
-

@@ -1,4 +1,4 @@
-#Sol 1
+# Sol 1
 def running_sums(nums):
     new_list = len(nums) * [None]
     prev = nums[0]
@@ -9,12 +9,13 @@ def running_sums(nums):
         new_list[i] = prev
     return new_list
 
-#Sol 2
+
+# Sol 2
 def running_sums(nums):
     new_nums = []
     total = 0
 
     for num in nums:
-        total += num 
+        total += num
         new_nums.append(total)
     return new_nums

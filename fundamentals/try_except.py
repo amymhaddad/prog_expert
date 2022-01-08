@@ -12,7 +12,7 @@
 """
 
 num = input("Enter the numerator: ")
-denom = input("Enter the denominator: ") 
+denom = input("Enter the denominator: ")
 
 try:
     num = float(num)
@@ -31,10 +31,9 @@ try:
 except ZeroDivisionError:
     print("You cannot divide by 0.")
     print("This division cannot be performed.")
-    
+
 except Exception:
     print("This division cannot be performed.")
 
 finally:
     print("Goodbye!")
-
