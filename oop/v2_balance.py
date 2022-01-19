@@ -9,7 +9,7 @@ class BankAccount:
 
     @balance.setter
     def balance(self, balance):
-        invalid_type = type(balance) not in [int, float]:
+        invalid_type = type(balance) not in [int, float]
         if invalid_type or balance < 0 or balance > 100000:
             return
 
