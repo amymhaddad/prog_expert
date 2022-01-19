@@ -81,4 +81,25 @@ c1 = Car("Ford", "x")
 c2 = Car("Mazda", "3")
 Car.update_num_cars(4)
 
-print(Car.number_of_cars)
+"""
+Aim of Circle is to group together related attr's and methods 
+Now I can modify the class attribute, pi, which will modify the 2 methods defined below
+-The methods do NOT rely on an instance of the Circle class   
+
+-Class method/class - can't access anything related to instances 
+"""
+class Circle:
+    pi = 3.14
+
+    @classmethod
+    def area(cls, radius):
+        return cls.pi * (radius ** 2)
+    
+    @classmethod
+    def perimeter(cls, radius):
+        return 2 * cls.pi * radius
+
+    @classmethod
+    def get_area_and_permiter(cls, radius):
+        #using methods w/in a method
+        return cls.area(radius), cls.perimeter(radius)
