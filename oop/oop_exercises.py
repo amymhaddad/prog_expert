@@ -88,18 +88,20 @@ Now I can modify the class attribute, pi, which will modify the 2 methods define
 
 -Class method/class - can't access anything related to instances 
 """
+
+
 class Circle:
     pi = 3.14
 
     @classmethod
     def area(cls, radius):
         return cls.pi * (radius ** 2)
-    
+
     @classmethod
-    def perimeter(cls, radius): 
+    def perimeter(cls, radius):
         return 2 * cls.pi * radius
 
     @classmethod
     def get_area_and_permiter(cls, radius):
-        #using methods w/in a method
+        # using methods w/in a method
         return cls.area(radius), cls.perimeter(radius)
