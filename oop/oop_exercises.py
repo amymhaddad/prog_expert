@@ -1,3 +1,6 @@
+from socket import AI_V4MAPPED_CFG
+
+
 class Foo:
     def __init__(self, name):
         self.name = name
@@ -105,3 +108,27 @@ class Circle:
     def get_area_and_permiter(cls, radius):
         # using methods w/in a method
         return cls.area(radius), cls.perimeter(radius)
+
+
+class Student:
+    bump_amt = 2.0
+
+    def __init__(self, name, grades=[]):
+        self.name = name
+        self.grades = grades
+
+    def ave(self):
+        return sum(self.grades) / len(self.grades)
+
+    @classmethod
+    def ave_from_grades_plus_bump(cls, grades):
+        ave = cls.ave_grades(grades)
+        return min(ave + cls.bump_amt, 100)
+
+    @staticmethod
+    def ave_grades(grades):
+        return sum(grades) / len(grades)
+
+
+t1 = Student("Tim", [80, 65, 75, 100])
+t2 = Student("C", [40, 50, 60, 76])
