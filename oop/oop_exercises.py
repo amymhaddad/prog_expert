@@ -453,3 +453,20 @@ a = D()
 #>>>
 
 #"C'"
+
+
+"""
+Ex
+"""
+class Animal:
+    def __init__(self, age, weight, height):
+        self.age = age
+        self.weight = weight
+        self.height = height
+
+class Mammal(Animal):
+    #Mammal inherits from Animal, so it must accept the same params as Animal plus any other params 
+    def __init__(self, age, weight, height, sex):
+        #Use the parent constructor by calling super() and passing the params in the super class, Animal, so I can use its constructor 
+        super().__init__(age, weight, height)
+        self.sex = sex 
