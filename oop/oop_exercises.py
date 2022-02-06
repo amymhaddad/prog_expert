@@ -304,10 +304,17 @@ class Page:
     def __len__(self):
         return len(self.text)
     
+    #Use to rep a human readable representation of our object 
     def __str__(self):
         #return self.text 
         #The above return works, but typically this is what you see: (all of the params -- all of the details of the Page)
         return f"Page(text = {self.text}, page_number =  {self.page_number})"
+    
+    #Use __repr__ to represent the internal rep of an object; to use when debugging
+    def __repr__(self):
+        #return the same info as in the __str__ : return f"Page(text = {self.text}, page_number =  {self.page_number})"
+        return self.__str__()
+
 
 class Book:
     def __init__(self, title, author, pages, id_number):
@@ -320,8 +327,16 @@ class Book:
         return len(self.pages)
     
     def __str__(self):
-        return self.text 
+        output = f"Book({self.title}, {self.author}, {self.id_number})"
 
+        for page in self.pages:
+            #when I get the str(page), I call the def __str__(self) method of the Page class
+            output += "\n" + str(page)
+        return output
+
+    #Use repr to debug and display useful info about the object
+    def __repr__(self):
+        return f"Book(id_number: {self.id_number})"
     
 
 page1 = Page("Page 1", 1)
@@ -330,4 +345,18 @@ book = Book("HW", "AMH", [page1, page2], 1)
 #WHen I try to print an object: print(page1), I get object itself and its memory address
 #The reason I get this output is bc behind the scenes I call teh string function on the object 
 #BUT I can override this internal representation using: __str__ and this method needs to return some string
-print(page1)
+#print("Here", book)
+#This is the result:
+#  Book(HW, AMH, 1)
+# Page(text = Page 1, page_number =  1)
+# Page(text = Page 2, page_number =  2)
+
+#To print the repr of an obj, I need to specify
+#print(repr(book))
+
+"""
+Calling print() on an instance of a class will cause the __str__ method to be called. 
+This is bc print() calls str() on all args before printing them 
+
+"""
+
