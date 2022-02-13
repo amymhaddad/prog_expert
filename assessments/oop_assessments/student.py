@@ -1,9 +1,11 @@
+ 
 
 class Student:
     all_students = []
 
     def __init__(self, name, grade):
         self.name = name 
+        #Want to prevent people from setting invalid grades; i want to make this attr private so use undersscore so this attr can't be modified outside of class
         self._grade = grade
         Student.all_students.append(self)
         
@@ -12,11 +14,11 @@ class Student:
         return self._grade 
 
     @grade.setter
-    def grade(self, grade):
-        if grade < 0 or grade > 100:
+    def grade(self, new_grade):
+        if new_grade < 0 or new_grade > 100:
             raise ValueError("Invalid grade")
-        else:
-            self.grade = grade 
+        #Set the private attr IF new_grade is w/in boundaries
+        self.grade = new_grade 
 
     def calculate_average_grade(students):
         if len(students) == 0:
@@ -39,20 +41,16 @@ class Student:
 
     @classmethod
     def get_best_student(cls):
-        if len(cls.all_students) == 0:
-            return None 
-        
-        best_grade = 0 
-        best_student = ""
-        for student in cls.all_students:
-            if student.grade > best_grade:
-                best_grade = student.grade 
-                best_student = student.name 
-        return Student(best_student, best_grade)
-        
+        best_student = None
 
-student1 = Student("Antoine", 75)
+        for student in cls.all_students:
+            if best_student == None or student.grade > best_student.grade:
+                best_student = student
+        return best_student
+      
+student1 = Student("ANtoine", 75)
+student2 = Student("Tim", 81)
 average = Student.get_average_grade()
 best_student = Student.get_best_student()
-print(best_student.name)
+print(average, best_student.name)
     
