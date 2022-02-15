@@ -1,4 +1,6 @@
+
 import math
+from turtle import pd
 
 
 class Polygon:
@@ -10,10 +12,9 @@ class Polygon:
 
     #Return perimeter of polygon
     def get_perimeter(self):
+       # import pdb; pdb.set_trace()
         all_sides = self.get_sides()
-        number_of_sides = (self.get_sides() - 2) * 180
-        return all_sides[0] * number_of_sides
-
+        return len(all_sides) * all_sides[0]
 
 
 class Triangle(Polygon):
@@ -23,7 +24,7 @@ class Triangle(Polygon):
         self.side3 = side3 
     
     def get_sides(self):
-        return [self.side1. self.side2, self.side3]
+        return [self.side1, self.side2, self.side3]
 
     def get_area(self):
         s = get_triangle_area(self.side1 + self.side2 + self.side3)
@@ -42,20 +43,24 @@ class Rectangle(Polygon):
     def get_area(self):
          return get_rectangle_area(self.width, self.height)
 
-#implement 
+    def get_perimeter(self):
+       # import pdb; pdb.set_trace()
+       return self.height + self.height + self.width + self.width
+
 class Square(Rectangle):
     def __init__(self, side):
        self.side = side 
     
     def get_sides(self):
-        return Rectangle.get_sides()
+       # import pdb; pdb.set_trace()
+        return Rectangle.get_sides(self.side, self.side)
     
     def get_area(self):
-        return Rectangle.get_area()
+        return self.side ** 2
+    
+    def get_perimeter(self):
+        return 4 * self.side
 
-
-
-# Use this function in your solution.
 def get_triangle_area(side1, side2, side3):
     semi_perimeter = (side1 + side2 + side3) / 2
     return math.sqrt(
@@ -66,7 +71,18 @@ def get_triangle_area(side1, side2, side3):
     )
 
 
-# Use this function in your solution.
 def get_rectangle_area(width, height):
     return width * height
 
+# triangle = Triangle(1, 1, 1)
+# print(triangle.get_perimeter()) #3
+# rect = Rectangle(2, 3)
+# print(rect.get_perimeter())
+# square = Square(3)
+# print(square.get_perimeter())
+
+# triangle = Triangle(1, 5, 6)
+# print(sorted(triangle.get_sides()))
+square = Square(3)
+
+print(sorted(square.get_sides()))
