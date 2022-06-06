@@ -27,8 +27,9 @@ class Deck:
             self.cards = []
             return returned_cards 
 
+        returned_cards = self.cards[len(self.cards)-num_cards:]
         self.cards = self.cards[:len(self.cards)-num_cards]
-        return returned_cards #here -- need to return the front most optoins -- not inlcuding hte returned_cards [a b c d e] -- need to return [a b c]
+        return returned_cards
    
     def sort_by_suit(self):
         sorted_suits = []
@@ -56,10 +57,6 @@ class Deck:
 
 
 deck1 = Deck()
-for i in range(10):
-    cards = deck1.deal(5)
-    #self.assertEqual(5, len(cards))
-print(deck1.cards)
-#self.cards isn't staying updated after the for loop runs
-# cards = deck1.deal(5)
-# print(deck1.cards)
+deck1.shuffle()
+cards = deck1.deal(1)
+print(cards)
