@@ -6,37 +6,33 @@ class Deck:
     valid_values = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"]
     valid_suits = ["H", "D", "C", "S"]
 
-    # creating optional param
     def __init__(self, cards=None):
-        # if cards is None, then self.create_cards() is run
-        self.cards = cards or self.create_cards()
+        self.cards = cards or self.create_deck()
 
-    def create_cards(self):
-        cards = []
-        for value in Deck.valid_values:
-            for suit in Deck.valid_suits:
-                cards.append("".join([value, suit]))
-        return cards
+    def create_deck(self):
+        return [
+            value + suit for value in Deck.valid_values for suit in Deck.valid_suits
+        ]
 
     def shuffle(self):
         random.shuffle(self.cards)
 
     def deal(self, num_cards):
-        returned_cards = self.cards
+        cards_to_deal = self.cards
         if num_cards > len(self.cards):
             self.cards = []
-            return returned_cards
+            return cards_to_deal
 
-        returned_cards = self.cards[len(self.cards) - num_cards :]
+        cards_to_deal = self.cards[len(self.cards) - num_cards :]
         self.cards = self.cards[: len(self.cards) - num_cards]
-        return returned_cards
+        return cards_to_deal
 
     def sort_by_suit(self):
         sorted_suits = []
 
         for suit in Deck.valid_suits:
             for card in self.cards:
-                if card[1] == suit:
+                if card[-1] == suit:
                     sorted_suits.append(card)
         self.cards = sorted_suits
 
@@ -44,9 +40,7 @@ class Deck:
         return card in self.cards
 
     def copy(self):
-        # Creating new deck w/copy of cards
-        # return Deck(self.get_cards())
-        return Deck(self.cards[:])
+        return Deck(self.get_cards())
 
     def get_cards(self):
         return self.cards[:]
