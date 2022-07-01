@@ -1,5 +1,3 @@
-
-
 class Range:
     def __init__(self, start, stop, step):
         self.start = start
@@ -9,7 +7,7 @@ class Range:
 
     def __iter__(self):
         self.current = self.start
-        return self 
+        return self
 
     def __next__(self):
         if self.step > 0 and self.current >= self.stop:
@@ -17,8 +15,6 @@ class Range:
 
         elif self.step < 0 and self.current <= self.stop:
             raise StopIteration
-        
+
         self.current += self.step
         return self.current - self.step
-
- 

@@ -3,4 +3,5 @@ def print_return_value(func):
         result = func(*args, **kwargs)
         print(result)
         return result
+
     return wrapper
