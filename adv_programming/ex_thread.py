@@ -1,9 +1,9 @@
 from imp import load_compiled
-from threading import Lock, Thread 
+from threading import Lock, Thread
 from time import sleep
 
 # mutex = Lock()
-# mutex.aquire() #wait for lock to become available. If mutex is already acquired by something else, we have to wait for it to be released 
+# mutex.aquire() #wait for lock to become available. If mutex is already acquired by something else, we have to wait for it to be released
 # mutex.release()
 
 """
